@@ -11,7 +11,7 @@
 
 - 👯 I’m looking to collaborate on [linktree](https://github.com/tinyplayerss/linktree)
 
-- 🤝 I’m looking for help with [linktree](https://github.com/tinyplayerss/linktree)
+- 🤝 I’m looking for help with [CustomBAR](https://github.com/tinyplayerss/CustomBAR)
 
 - 📫 How to reach me Via Discord **@tinyplayerss**
 
