@@ -165,51 +165,25 @@ footer a:hover {
     border: 1px solid white;
 }
 
-/* Custom Styles for Profile Views */
-#profile-views-container {
-    display: inline-block;
-    margin-right: 10px; /* Adjust spacing */
+/* Add this CSS in your existing styles.css or create a new one */
+.activity {
+    border: 1px solid #0b3148; /* GitHub border-secondary color */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #061726;
+    color: #c9d1d9;
+    font-size: 14px;
 }
 
-#profile-views-container a {
-    text-decoration: none;
-    color: #0b3148; /* Text color */
-    display: flex;
-    align-items: center;
+.github-activities {
+    border-top: 2px solid #30363d; /* GitHub border-secondary color */
+    padding-top: 20px;
+    margin-top: 20px;
 }
 
-#profile-views-container i {
-    font-size: 20px; /* Adjust icon size */
-    margin-right: 5px; /* Adjust spacing between icon and text */
-}
-
-#profile-views-container span {
-    font-size: 20px; /* Adjust text size */
-}
-
-/* Counter Styles */
-#profile-views-counter::before {
-    content: counter(profileViews);
-    font-weight: bold;
-}
-
-#activity-chart {
-    width: 100%;
-    max-width: 800px; /* Adjust as needed */
-    margin: 20px auto;
-}
-
-/* Limit the height of the contribution graph */
-/* Limit the height of the contribution graph */
-#activity-chart {
-    max-height: 300px;
-    overflow-y: auto;  /* Add a scrollbar if the graph exceeds the specified height */
-}
-  
-/* Make the contribution graph responsive and fit the container width */
-#activity-chart {
-    max-width: 100%; /* Allow the graph to scale down, but not exceed 100% of its natural size */
-    height: auto; /* Allow the height to adjust proportionally */
-    display: block; /* Ensure it's treated as a block-level element */
-    margin: 0 auto; /* Center the graph within the container */
+.github-activities h2 {
+    color: #1f9ad0;
+    font-size: 24px;
+    margin-bottom: 20px;
 }

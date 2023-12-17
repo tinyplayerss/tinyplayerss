@@ -10,18 +10,11 @@
     ></script>
     <!-- Add this script tag in the <head> section of your HTML -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <title>tinyplayerss Github Profile</title>
   </head>
   <body>
     <div class="container">
-      <div class="badge-container">
-        <!-- Updated Profile Views code -->
-        <div id="profile-views-container">
-          <!-- Profile views will be displayed here -->
-        </div>
-      </div>
       <div class="profile-section">
         <img
           src="https://avatars.githubusercontent.com/u/123846642?v=4"
@@ -45,7 +38,12 @@
         </ul>
       </section>
 
-      <canvas id="activity-chart"></canvas>
+      <section class="github-activities">
+        <h2>GitHub Activities</h2>
+        <div id="github-activities-container">
+          <!-- GitHub activities will be displayed here -->
+        </div>
+      </section>
 
       <section class="projects">
         <h2>My Projects</h2>
@@ -186,86 +184,108 @@ Best regards,
 
       <script>
         document.addEventListener("DOMContentLoaded", function () {
-          const accessToken =
-            "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";
           const username = "tinyplayerss";
+          const apiUrl = `https://api.github.com/users/${username}/events`;
 
-          const apiUrl = "https://api.github.com/graphql";
-
-          const query = `
-        query {
-            user(login: "${username}") {
-                contributionsCollection {
-                    contributionCalendar {
-                        totalContributions
-                        weeks {
-                            contributionDays {
-                                date
-                                contributionCount
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    `;
-
-          axios
-            .post(
-              apiUrl,
-              { query },
-              {
-                headers: {
-                  Authorization: `Bearer ${accessToken}`,
-                },
-              }
-            )
-            .then((response) => {
-              const data =
-                response.data.data.user.contributionsCollection
-                  .contributionCalendar;
-
-              const dates = data.weeks[0].contributionDays.map(
-                (day) => day.date
-              );
-              const counts = data.weeks.map((week) =>
-                week.contributionDays.reduce(
-                  (acc, day) => acc + day.contributionCount,
-                  0
-                )
+          fetch(apiUrl)
+            .then((response) => response.json())
+            .then(async (data) => {
+              // Sort events by timestamp in descending order
+              data.sort(
+                (a, b) => new Date(b.created_at) - new Date(a.created_at)
               );
 
-              // Create the chart
-              const ctx = document
-                .getElementById("activity-chart")
-                .getContext("2d");
-              new Chart(ctx, {
-                type: "line",
-                data: {
-                  labels: dates,
-                  datasets: [
-                    {
-                      label: "Contributions",
-                      data: counts,
-                      borderColor: "#1f9ad0",
-                      borderWidth: 2,
-                      fill: false,
-                    },
-                  ],
-                },
-                options: {
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  scales: {
-                    x: {
-                      type: "linear",
-                      position: "bottom",
-                    },
-                  },
-                },
+              const githubActivitiesContainer = document.getElementById(
+                "github-activities-container"
+              );
+
+              // Helper function to fetch commit count for a repository
+              const getCommitCount = async (repo) => {
+                const commitsUrl = `https://api.github.com/repos/${repo}/commits`;
+                const commits = await fetch(commitsUrl).then((response) =>
+                  response.json()
+                );
+                return commits.length;
+              };
+
+              data.slice(0, 3).forEach(async (activity) => {
+                const activityElement = document.createElement("div");
+                activityElement.classList.add("activity");
+
+                const profileImageElement = document.createElement("img");
+                const usernameElement = document.createElement("p");
+                const typeElement = document.createElement("p");
+                const timestampElement = document.createElement("p");
+                const repoElement = document.createElement("p");
+                const titleElement = document.createElement("p");
+                const commitCountElement = document.createElement("p");
+
+                // Map GitHub event type to a color
+                const eventTypeToColor = {
+                  PushEvent: "#28a745", // Green color for Push events
+                  PullRequestEvent: "#e83e8c", // PinkRed color for Pull Requests
+                  MergeEvent: "#6f42c1", // Purple color for Merged events
+                  // Add more event types and colors as needed
+                };
+
+                const color = eventTypeToColor[activity.type] || "#ffffff"; // Default color
+
+                profileImageElement.src =
+                  activity.actor && activity.actor.avatar_url
+                    ? activity.actor.avatar_url
+                    : "";
+                profileImageElement.alt =
+                  activity.actor && activity.actor.login
+                    ? `Profile Image of ${activity.actor.login}`
+                    : "Profile Image";
+
+                // Apply circular styling to the profile image
+                profileImageElement.style.borderRadius = "50%";
+                profileImageElement.style.width = "24px"; // Adjust the size as needed
+                profileImageElement.style.height = "24px"; // Adjust the size as needed
+
+                usernameElement.textContent =
+                  activity.actor && activity.actor.login
+                    ? `(${activity.actor.login})`
+                    : "";
+
+                // Format timestamp to a more readable format
+                const formattedTimestamp = new Date(
+                  activity.created_at
+                ).toLocaleString();
+
+                typeElement.style.color = color;
+                timestampElement.style.color = "#8b949e"; // GitHub text-secondary color
+                repoElement.style.color = "#8b949e"; // GitHub text-secondary color
+                titleElement.style.color = "#8b949e"; // GitHub text-secondary color
+                commitCountElement.style.color = "#8b949e"; // GitHub text-secondary color
+
+                typeElement.innerHTML = `<i class="fas fa-bolt"></i> ${activity.type.replace(
+                  "Event",
+                  ""
+                )}`;
+                timestampElement.innerHTML = `<i class="fas fa-clock"></i> ${formattedTimestamp}`;
+                repoElement.innerHTML = `<i class="fab fa-github"></i> ${activity.repo.name}`;
+                titleElement.innerHTML = `<i class="fas fa-comment"></i> ${activity.payload.comment?.body}`;
+
+                // Fetch commit count for the repository
+                const commitCount = await getCommitCount(activity.repo.name);
+                commitCountElement.innerHTML = `<i class="fas fa-code"></i> Commits: ${commitCount}`;
+
+                activityElement.appendChild(profileImageElement);
+                activityElement.appendChild(usernameElement);
+                activityElement.appendChild(typeElement);
+                activityElement.appendChild(timestampElement);
+                activityElement.appendChild(repoElement);
+                activityElement.appendChild(titleElement);
+                activityElement.appendChild(commitCountElement);
+
+                githubActivitiesContainer.appendChild(activityElement);
               });
             })
-            .catch((error) => console.error("Error fetching data:", error));
+            .catch((error) =>
+              console.error("Error fetching GitHub activities:", error)
+            );
         });
       </script>
 
