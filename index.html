@@ -266,7 +266,9 @@ Best regards,
                 )}`;
                 timestampElement.innerHTML = `<i class="fas fa-clock"></i> ${formattedTimestamp}`;
                 repoElement.innerHTML = `<i class="fab fa-github"></i> ${activity.repo.name}`;
-                titleElement.innerHTML = `<i class="fas fa-comment"></i> ${activity.payload.comment?.body}`;
+                titleElement.innerHTML = `<i class="fas fa-comment"></i> ${
+                  activity.payload.comment?.body || "No comment provided"
+                }`;
 
                 // Fetch commit count for the repository
                 const commitCount = await getCommitCount(activity.repo.name);
