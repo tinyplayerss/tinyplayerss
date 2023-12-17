@@ -216,8 +216,7 @@ Best regards,
                 const usernameElement = document.createElement("p");
                 const typeElement = document.createElement("p");
                 const timestampElement = document.createElement("p");
-                const repoElement = document.createElement("p");
-                const titleElement = document.createElement("p");
+                const repoElement = document.createElement("a");
                 const commitCountElement = document.createElement("p");
 
                 // Map GitHub event type to a color
@@ -257,7 +256,6 @@ Best regards,
                 typeElement.style.color = color;
                 timestampElement.style.color = "#8b949e"; // GitHub text-secondary color
                 repoElement.style.color = "#8b949e"; // GitHub text-secondary color
-                titleElement.style.color = "#8b949e"; // GitHub text-secondary color
                 commitCountElement.style.color = "#8b949e"; // GitHub text-secondary color
 
                 typeElement.innerHTML = `<i class="fas fa-bolt"></i> ${activity.type.replace(
@@ -266,20 +264,17 @@ Best regards,
                 )}`;
                 timestampElement.innerHTML = `<i class="fas fa-clock"></i> ${formattedTimestamp}`;
                 repoElement.innerHTML = `<i class="fab fa-github"></i> ${activity.repo.name}`;
-                titleElement.innerHTML = `<i class="fas fa-comment"></i> ${
-                  activity.payload.comment?.body || "No comment provided"
-                }`;
-
-                // Fetch commit count for the repository
-                const commitCount = await getCommitCount(activity.repo.name);
-                commitCountElement.innerHTML = `<i class="fas fa-code"></i> Commits: ${commitCount}`;
+                repoElement.href = `https://github.com/${activity.repo.name}`;
+                repoElement.target = "_blank";
+                commitCountElement.innerHTML = `<i class="fas fa-code"></i> Commits: ${await getCommitCount(
+                  activity.repo.name
+                )}`;
 
                 activityElement.appendChild(profileImageElement);
                 activityElement.appendChild(usernameElement);
                 activityElement.appendChild(typeElement);
                 activityElement.appendChild(timestampElement);
                 activityElement.appendChild(repoElement);
-                activityElement.appendChild(titleElement);
                 activityElement.appendChild(commitCountElement);
 
                 githubActivitiesContainer.appendChild(activityElement);
