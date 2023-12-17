@@ -1,0 +1,215 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #061726;
+    color: #c9d1d9; /* GitHub text color */
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #000312;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.profile-section {
+    text-align: center;
+}
+
+.profile-image {
+    width: 150px; /* Adjust the size as needed */
+    border-radius: 50%;
+    border: 2px solid #1f9ad0;
+    padding: 5px;
+}
+
+.github-username {
+    color: #ffffff; /* GitHub blue color */
+}
+
+header, section, footer {
+    margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+    color: #1f9ad0; /* GitHub blue color */
+}
+
+p {
+    color: #8b949e; /* GitHub text-secondary color */
+}
+
+.projects {
+    border-top: 2px solid #30363d; /* GitHub border-secondary color */
+    padding-top: 20px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.project {
+    border: 1px solid #0b3148; /* GitHub border-secondary color */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+footer a {
+    text-decoration: none;
+    color: #1f9ad0; /* GitHub blue color */
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.techlanguages > ul {
+    list-style: none;
+}
+
+.languagescolumn {
+    font-size: 30px;
+    display: flex;
+    padding: 5px;
+    column-gap: 10px;
+}
+
+.buttonlink {
+    text-decoration: none;
+    color: #1f9ad0;
+    padding: 5px;
+    background-color: #061726;
+    border-radius: 5px;
+    border: 1px solid #1f9ad0;
+    display: inline;
+    height: fit-content;
+}
+
+.buttonlink:hover {
+    color: white;
+}
+
+/* New styles for the contact form */
+.contact-form {
+    margin-top: 30px;
+    text-align: left;
+    border-top: 2px solid #30363d;
+    padding-top: 20px;
+}
+
+.contact-form h2 {
+    color: #1f9ad0;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contact-form form {
+    max-width: nax-content;
+    margin: 0 auto;
+    grid-auto-flow: dense;
+}
+
+.contact-form label {
+    display: block;
+    color: #1f9ad0;
+    margin-bottom: 8px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 97%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #1f9ad0;
+    border-radius: 15px;
+    background-color: #061726;
+    color: #c9d1d9;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #8b949e;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #1f9ad0;
+    background-color: #0e293e;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    height: 250px;
+}
+
+.contact-form button {
+    width: fit-content;
+    padding: 12px;
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 1px solid white;
+    font-weight: bolder;
+    font-size: 12px;
+}
+
+.contact-form button:hover {
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+/* Custom Styles for Profile Views */
+#profile-views-container {
+    display: inline-block;
+    margin-right: 10px; /* Adjust spacing */
+}
+
+#profile-views-container a {
+    text-decoration: none;
+    color: #0b3148; /* Text color */
+    display: flex;
+    align-items: center;
+}
+
+#profile-views-container i {
+    font-size: 20px; /* Adjust icon size */
+    margin-right: 5px; /* Adjust spacing between icon and text */
+}
+
+#profile-views-container span {
+    font-size: 20px; /* Adjust text size */
+}
+
+/* Counter Styles */
+#profile-views-counter::before {
+    content: counter(profileViews);
+    font-weight: bold;
+}
+
+#activity-chart {
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    margin: 20px auto;
+}
+
+/* Limit the height of the contribution graph */
+/* Limit the height of the contribution graph */
+#activity-chart {
+    max-height: 300px;
+    overflow-y: auto;  /* Add a scrollbar if the graph exceeds the specified height */
+}
+  
+/* Make the contribution graph responsive and fit the container width */
+#activity-chart {
+    max-width: 100%; /* Allow the graph to scale down, but not exceed 100% of its natural size */
+    height: auto; /* Allow the height to adjust proportionally */
+    display: block; /* Ensure it's treated as a block-level element */
+    margin: 0 auto; /* Center the graph within the container */
+}

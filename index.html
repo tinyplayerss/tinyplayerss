@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/739e3ae0dc.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Add this script tag in the <head> section of your HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>tinyplayerss Github Profile</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="badge-container">
+        <!-- Updated Profile Views code -->
+        <div id="profile-views-container">
+          <!-- Profile views will be displayed here -->
+        </div>
+      </div>
+      <div class="profile-section">
+        <img
+          src="https://avatars.githubusercontent.com/u/123846642?v=4"
+          alt="Profile Image"
+          class="profile-image"
+        />
+        <h2 class="github-username">tinyplayerss</h2>
+      </div>
+
+      <header>
+        <h1>About Me</h1>
+        <p>A passionate frontend developer from South Africa</p>
+      </header>
+
+      <section class="techlanguages">
+        <h2>Languages & Tech</h2>
+        <ul class="languagescolumn">
+          <li><i class="fab fa-html5"></i></li>
+          <li><i class="fab fa-css3-alt"></i></li>
+          <li><i class="fab fa-bootstrap"></i></li>
+        </ul>
+      </section>
+
+      <canvas id="activity-chart"></canvas>
+
+      <section class="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+          <!-- Project 1 -->
+          <div class="project">
+            <a
+              href="https://github.com/tinyplayerss/gitlinks"
+              target="_blank"
+              class="buttonlink"
+              >Go to Project</a
+            >
+            <a
+              href="https://tinyplayerss.github.io/gitlinks"
+              target="_blank"
+              class="buttonlink"
+              >Website</a
+            >
+            <h3>GitLinks</h3>
+            <p>
+              This is a linktree Project that can be Forked and be used by many
+              Streamers/Creators
+            </p>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project">
+            <a
+              href="https://github.com/tinyplayerss/CustomBAR"
+              target="_blank"
+              class="buttonlink"
+              >Go to Project</a
+            >
+            <a
+              href="https://tinyplayerss.github.io/CustomBAR"
+              target="_blank"
+              class="buttonlink"
+              >Website</a
+            >
+            <h3>CustomBAR</h3>
+            <p>
+              This is a customizable progress bar used for Twitch Streamers,
+              Rumble Streamers, and Streamers in general!
+            </p>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project">
+            <a
+              href="https://github.com/tinyplayerss/RUM-Slides"
+              target="_blank"
+              class="buttonlink"
+              >Go to Project</a
+            >
+            <h3>RUM-Slides</h3>
+            <p>
+              Enhance your streaming experience with RUM-Slides, a versatile
+              image overlay solution designed for content creators. This project
+              leverages HTML, CSS, and JavaScript to create a dynamic overlay
+              card featuring a slideshow of images. Tailored for streamers.
+            </p>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project">
+            <a
+              href="https://github.com/tinyplayerss/RUM-Color"
+              target="_blank"
+              class="buttonlink"
+              >Go to Project</a
+            >
+            <a
+              href="https://tinyplayerss.github.io/RUM-Color"
+              target="_blank"
+              class="buttonlink"
+              >Website</a
+            >
+            <h3>RUM-Color</h3>
+            <p>
+              RUM-Color is a Website hosted on Github Pages, It's a Tool thats
+              Designed for Rumble Creators/Streamers to be able to Match there
+              Content Consistently, Across there Content, This Tool is Free to
+              use for Any Commercial Purposes.
+            </p>
+          </div>
+
+          <!-- Add more projects as needed -->
+        </div>
+      </section>
+
+      <section class="contact-form">
+        <h2>Contact Me</h2>
+        <form
+          action="mailto:tinyplayerss@gmail.com?subject=Github-job-contact"
+          method="post"
+          enctype="text/plain"
+        >
+          <label for="name">Name:</label>
+          <input
+            placeholder="Name"
+            type="text"
+            id="name"
+            name="name"
+            required
+          />
+
+          <label for="email">Email:</label>
+          <input
+            placeholder="You@example.com"
+            type="email"
+            id="email"
+            name="email"
+            required
+          />
+
+          <label for="message">Message:</label>
+          <textarea
+            placeholder="Hello,
+      
+I'm [Your Name], a skilled web developer specializing in HTML, CSS, and Bootstrap. I am excited about the prospect of contributing my expertise to your web project.
+                  
+To ensure that your digital venture achieves its full potential, please share the details and goals of your project. By collaborating, we can transform your vision into a standout online presence.
+                  
+I am eager to discuss how my skills align with your needs and contribute to the success of your project. Looking forward to the opportunity to work with you.
+                  
+Best regards,
+                  
+[Your Name]"
+            id="message"
+            name="message"
+            rows="4"
+            required
+          ></textarea>
+
+          <button type="submit" class="buttonlink">Send Message</button>
+        </form>
+      </section>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const accessToken =
+            "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";
+          const username = "tinyplayerss";
+
+          const apiUrl = "https://api.github.com/graphql";
+
+          const query = `
+        query {
+            user(login: "${username}") {
+                contributionsCollection {
+                    contributionCalendar {
+                        totalContributions
+                        weeks {
+                            contributionDays {
+                                date
+                                contributionCount
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `;
+
+          axios
+            .post(
+              apiUrl,
+              { query },
+              {
+                headers: {
+                  Authorization: `Bearer ${accessToken}`,
+                },
+              }
+            )
+            .then((response) => {
+              const data =
+                response.data.data.user.contributionsCollection
+                  .contributionCalendar;
+
+              const dates = data.weeks[0].contributionDays.map(
+                (day) => day.date
+              );
+              const counts = data.weeks.map((week) =>
+                week.contributionDays.reduce(
+                  (acc, day) => acc + day.contributionCount,
+                  0
+                )
+              );
+
+              // Create the chart
+              const ctx = document
+                .getElementById("activity-chart")
+                .getContext("2d");
+              new Chart(ctx, {
+                type: "line",
+                data: {
+                  labels: dates,
+                  datasets: [
+                    {
+                      label: "Contributions",
+                      data: counts,
+                      borderColor: "#1f9ad0",
+                      borderWidth: 2,
+                      fill: false,
+                    },
+                  ],
+                },
+                options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  scales: {
+                    x: {
+                      type: "linear",
+                      position: "bottom",
+                    },
+                  },
+                },
+              });
+            })
+            .catch((error) => console.error("Error fetching data:", error));
+        });
+      </script>
+
+      <footer>
+        <p>Connect with me on GitHub:</p>
+        <a href="https://github.com/tinyplayerss" target="_blank">
+          <i class="fab fa-github"></i> tinyplayerss
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>
