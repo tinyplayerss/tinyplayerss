@@ -5,11 +5,11 @@
 
 <p align="left"> <a href="https://twitter.com/tinyplayerss" target="blank"><img src="https://img.shields.io/twitter/follow/tinyplayerss?logo=twitter&style=for-the-badge" alt="tinyplayerss" /></a> </p>
 
-- 🔭 I’m currently working on [linktree](https://github.com/tinyplayerss/linktree)
+- 🔭 I’m currently working on [GitLinks](https://github.com/tinyplayerss/linktree)
 
 - 🌱 I’m currently learning **Responsive Web Design**
 
-- 👯 I’m looking to collaborate on [linktree](https://github.com/tinyplayerss/linktree)
+- 👯 I’m looking to collaborate on [CustomBAR](https://github.com/tinyplayerss/linktree)
 
 - 🤝 I’m looking for help with [CustomBAR](https://github.com/tinyplayerss/CustomBAR)
 
