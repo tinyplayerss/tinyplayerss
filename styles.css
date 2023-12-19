@@ -70,7 +70,7 @@ p {
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 20px;
+    grid-gap: 10px;
 }
 
 .project {
@@ -78,6 +78,11 @@ p {
     padding: 10px;
     border-radius: 10px;
     background-color: #061726;
+}
+
+footer {
+    justify-content: center;
+    display: flex;
 }
 
 footer a {
@@ -126,6 +131,8 @@ footer a:hover {
     text-align: left;
     border-top: 2px solid #30363d;
     padding-top: 20px;
+    width: 100%;
+    height: auto;
 }
 
 .contact-form h2 {
@@ -147,7 +154,7 @@ footer a:hover {
 
 .contact-form input,
 .contact-form textarea {
-    width: 60%;
+    width: 50%;
     padding: 12px;
     margin-bottom: 20px;
     border: 1px solid #1f9ad0;
@@ -225,4 +232,59 @@ footer a:hover {
 .fa-paper-plane {
     margin-right: 10px;
     scale: 1.2;
+}
+
+/* Sponsor Ad */
+.sponsorbanner {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    animation: bounce 3s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+
+.sponsorlink {
+    text-decoration: none;
+    color: #1f9ad0
+}
+
+.sponsorlink:hover {
+    color: white;
+}
+
+.sponsor-content {
+    color: white;
+    font-weight: bold;
+    border-top: 2px solid #30363d; /* GitHub border-secondary color */
+    padding-top: 20px;
+}
+
+#donate-button {
+    display: flex;
+    width: 125px;
+    float: right;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 2;
+}
+
+.github-username {
+    margin-bottom: 50px;
+}
+
+.success-icon {
+    text-shadow: 0px 0px 50px;
 }

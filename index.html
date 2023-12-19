@@ -22,6 +22,24 @@
           class="profile-image"
         />
         <h2 class="github-username">tinyplayerss</h2>
+        <div id="donate-button-container">
+          <div id="donate-button"></div>
+          <script
+            src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js"
+            charset="UTF-8"
+          ></script>
+          <script>
+            PayPal.Donation.Button({
+              env: "production",
+              hosted_button_id: "Y5G4BSWSDMJLC",
+              image: {
+                src: "https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif",
+                alt: "Donate with PayPal button",
+                title: "PayPal - The safer, easier way to pay online!",
+              },
+            }).render("#donate-button");
+          </script>
+        </div>
       </div>
 
       <header>
@@ -141,6 +159,21 @@
 
           <!-- Add more projects as needed -->
         </div>
+      </section>
+      <section class="sponsor-content">
+        <a target="_blank" href="https://coffeebrandcoffee.com"
+          ><img class="sponsorbanner" src="sponsor/CBC Sponsor Banner.png"
+        /></a>
+        <p>
+          Use Code tiny10 for 10% OFF at
+          <a
+            class="sponsorlink"
+            target="_blank"
+            href="https://coffeebrandcoffee.com"
+            >CoffeeBrandCoffee</a
+          >
+          at Checkout
+        </p>
       </section>
       <section class="contact-form">
         <h2>Contact Me</h2>

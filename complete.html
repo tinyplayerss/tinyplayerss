@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script
+      src="https://kit.fontawesome.com/739e3ae0dc.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Donation Success</title>
+    <!-- Bootstrap CSS Link -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Font Awesome CSS Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #061726;
+        color: #c9d1d9; /* GitHub text color */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .container {
+        text-align: center;
+        background-color: #000312; /* Dark blue color similar to index.html */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+      }
+
+      .success-icon {
+        color: #28a745; /* Bootstrap success color */
+        font-size: 5em;
+        margin-bottom: 20px;
+        animation: fadeInUp 1s ease-in-out; /* Fade in animation */
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: #1f9ad0; /* GitHub blue color */
+      }
+
+      p {
+        color: #8b949e; /* GitHub text-secondary color */
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="https://avatars.githubusercontent.com/u/123846642?v=4"
+        alt="Profile Image"
+        class="profile-image completeimg"
+      />
+      <h2 class="github-username">tinyplayerss</h2>
+      <i class="fas fa-check-circle success-icon"></i>
+      <h1>Donation Successful!</h1>
+      <p>Thank you for your generous contribution. Your support means a lot!</p>
+      <a href="index.html" class="buttonlink">Home Page</a>
+      <!-- You can add additional content or links here -->
+    </div>
+
+    <!-- Bootstrap JS and Popper.js scripts (required for Bootstrap components) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
