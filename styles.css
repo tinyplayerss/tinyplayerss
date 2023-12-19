@@ -254,8 +254,8 @@ footer a:hover {
     }
 }
 
-
 .sponsorlink {
+    text-decoration: none;
     color: #1f9ad0;
 }
 
