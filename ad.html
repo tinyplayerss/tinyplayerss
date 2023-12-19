@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .slideshow-container {
+        width: 100%;
+        max-height: 500px; /* Set the maximum height for desktop view */
+        overflow: hidden;
+      }
+
+      .slideshow-images {
+        display: flex;
+        transition: transform 1s ease-in-out;
+        max-width: 100%; /* Make sure the images don't exceed the container width */
+        margin: 0 auto; /* Center the images within the container */
+        overflow: hidden; /* Hide any extra images that might overflow */
+      }
+
+      .slideshow-image {
+        flex: 0 0 100%; /* Each image takes up the full width */
+        height: auto;
+        margin-right: 0; /* Remove margin between images */
+        object-fit: contain; /* Ensure the entire image is visible within the container */
+        max-width: 100%; /* Set the maximum width of the image to the container width */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slideshow-container">
+      <div class="slideshow-images">
+        <img
+          src="sponsor/CBC Web Ads/CBC tinyplayerss discord web ad.png"
+          alt="Ad 1"
+          class="slideshow-image"
+        />
+        <img
+          src="sponsor/CBC Web Ads/CBC tinyplayerss discord web ad 2.png"
+          alt="Ad 2"
+          class="slideshow-image"
+        />
+        <img
+          src="sponsor/CBC Web Ads/CBC tinyplayerss discord web ad 3.png"
+          alt="Ad 3"
+          class="slideshow-image"
+        />
+      </div>
+    </div>
+
+    <script>
+      setInterval(() => {
+        const slideshowImages = document.querySelector(".slideshow-images");
+        const firstImage = document.querySelector(
+          ".slideshow-image:first-child"
+        );
+
+        // Move the first image to the end
+        slideshowImages.appendChild(firstImage.cloneNode(true));
+        firstImage.remove();
+
+        // Reset the transform to show the new first image
+        slideshowImages.style.transform = "translateX(0)";
+      }, 8000);
+    </script>
+  </body>
+</html>
