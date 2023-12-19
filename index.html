@@ -244,7 +244,7 @@
                 return commits.length;
               };
 
-              data.slice(0, 3).forEach(async (activity) => {
+              data.slice(0, 1).forEach(async (activity) => {
                 // Check if the event ID is unique
                 if (!uniqueEventIds.has(activity.id)) {
                   uniqueEventIds.add(activity.id);
