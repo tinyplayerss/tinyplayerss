@@ -280,6 +280,10 @@ footer a:hover {
     margin-top: 10px;
 }
 
+.coffeemug {
+    margin-right: 10px;
+}
+
 #donate-button {
     display: flex;
     width: 125px;
