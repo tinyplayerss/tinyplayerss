@@ -238,7 +238,6 @@ footer a:hover {
 .sponsorbanner {
     border-radius: 15px;
     animation: bounce 3s infinite ease-in-out;
-    border: 3px solid white;
     height: 210px;
     width: 100%;
 }
@@ -253,13 +252,6 @@ footer a:hover {
     60% {
         transform: translateY(-5px);
     }
-}
-
-.sponsor-content {
-    color: white;
-    font-weight: bold;
-    border-top: 2px solid #30363d; /* GitHub border-secondary color */
-    padding-top: 20px;
 }
 
 .cbc-button {
